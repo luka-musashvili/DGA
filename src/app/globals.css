@@ -1,27 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian&display=swap");
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	background-color: #f4f5f9;
+	color: black;
+}
+
+* {
+	font-family: "Noto Sans Georgian", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.flexCenter {
+	@apply flex justify-center items-center;
+}
+
+.flexBetween {
+	@apply flex justify-between items-center;
+}
+
+.flexStart {
+	@apply flex items-center justify-start;
+}
+
+.uppercase {
+	font-feature-settings: "case" on; /* ქართული ფონტისთვის */
+	text-transform: uppercase;
 }
