@@ -8,6 +8,7 @@ const LoginForm = () => {
 	const [emailOrMobile, setEmailOrMobile] = useState("");
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+	const [hint, setHint] = useState("");
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -37,7 +38,8 @@ const LoginForm = () => {
 					Cookies.set("token", result.data.token, { expires: 5 / 24 });
 					console.log("Token set as cookie:", result.data.token);
 				} else {
-					console.log("Login failed:", result.message);
+					setHint(result.error);
+					console.log("Login failed:", result.error);
 				}
 			})
 			.catch((error) => console.log("error", error));
@@ -69,9 +71,9 @@ const LoginForm = () => {
 					<h4 className="text-text-color-secondary text-center font-normal text-sm mt-2">ავტორიზაციისთვის გთხოვთ გამოიყენოთ თქვენი MY.GOV.GE_ის ანგარიში</h4>
 				</div>
 				<div className="flex flex-col">
-					<Input marginBot="mb-6" label="მომხმარებელი" type="text" placeholder="ელ.ფოსტა ან მობილური" value={emailOrMobile} onChange={(e) => setEmailOrMobile(e.target.value)} />
-					<Input marginBot="mb-2" label="პაროლი" type={showPassword ? "text" : "password"} placeholder="პაროლი" value={password} onChange={(e) => setPassword(e.target.value)} />
-					<Checkbox checked={showPassword} onChange={togglePasswordVisibility} label="მაჩვენე პაროლი"></Checkbox>
+					<Input additionalClasses="mb-6" label="მომხმარებელი" type="text" placeholder="ელ.ფოსტა ან მობილური" value={emailOrMobile} onChange={(e) => setEmailOrMobile(e.target.value)} />
+					<Input label="პაროლი" hint={hint} type={showPassword ? "text" : "password"} placeholder="პაროლი" value={password} onChange={(e) => setPassword(e.target.value)} />
+					<Checkbox additionalClasses="mt-2" checked={showPassword} onChange={togglePasswordVisibility} label="მაჩვენე პაროლი"></Checkbox>
 				</div>
 				<div className="flex justify-end">
 					<Button text="შესვლა" variant="primary" />

@@ -4,24 +4,23 @@ import { response } from "@/util/response.util";
 
 export async function POST(request: Request) {
 	const { username, password } = await request.json();
-	console.log("asdasda");
 
 	try {
 		const user = await axiosInstance.get(`users?email=${username}`);
-		// პირველ რიგში ვამოწმებ არსებობს თუ არა ბაზაში მომხმარებელი, რათა რელევანტური ერორი დავურენდერო ფრონტზე
+		// პირველ რიგში ვამოწმებ არსებობს თუ არა ბაზაში მომხმარებელი, რათა რელევანტური ერორი დავარენდერო ფრონტზე
 		if (!user.data[0]) {
 			return new Response(JSON.stringify({ success: false, error: "მომხმარებელი არ არსებობს" }), {
 				headers: { "content-type": "application/json" },
 			});
 		}
 		// const match = await verifyPassword(password, user.data[0].password);
-		// console.log("matchmatch");
+		// console.log("matchmatch1");
 		// console.log(password);
-		// console.log("matchmatch");
+		// console.log("matchmatch2");
 		// console.log(user.data[0].password);
-		// console.log("matchmatch");
+		// console.log("matchmatch3");
 		// console.log(match);
-		// brypt.compare ვერ მუშაობს სწორად, ყოველთივს false გამოაქვს, if else ლოგიკაც პირიქითაა შეცვლილი ქვევით
+		// brypt.compare ვერ მუშაობს სწორად, ყოველთვის false გამოაქვს, if else ლოგიკაც პირიქითაა შეცვლილი ქვევით
 		const matchv2 = password === user.data[0].password;
 		// console.log("matchmatchv2");
 		// console.log(matchv2);

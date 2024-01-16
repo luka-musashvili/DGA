@@ -55,6 +55,7 @@ const config: Config = {
 					secondary: "#757575",
 					checkbox: "#474747",
 					button: "#2970FF",
+					error: "#7A0000",
 				},
 			},
 			maxHeight: {
