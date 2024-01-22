@@ -1,10 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
-	title: "ციფრული მმართველობის სააგენტო",
-	description: "homework for LEPL Digital Governance Agency",
+	title: "პოლიტიკის დაგეგმვისა და კორდინაციის მართვის ელექტრონული სისტემა",
+	description: "დავალება ციფრული მმართველობის სააგენტოსთვის",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

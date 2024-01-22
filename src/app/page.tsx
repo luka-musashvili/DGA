@@ -1,17 +1,5 @@
-import { GetServerSideProps } from "next";
-import "@/app/globals.css";
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-// 	return {
-// 		redirect: {
-// 			destination: "/users",
-// 			permanent: false,
-// 		},
-// 	};
-// };
-
-const Home = () => {
-	return "hi";
+const Page = async () => {
+	return <h1>ვამისამართებ "/users"-ში</h1>;
 };
 
-export default Home;
+export default Page;

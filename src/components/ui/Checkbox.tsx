@@ -3,8 +3,8 @@ import React from "react";
 type CheckboxProps = {
 	label?: string;
 	additionalClasses?: string;
-	checked: boolean;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	checked?: boolean;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Checkbox = ({ label, additionalClasses, checked, onChange }: CheckboxProps) => {

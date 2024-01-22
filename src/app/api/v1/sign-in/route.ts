@@ -4,7 +4,6 @@ import { response } from "@/util/response.util";
 
 export async function POST(request: Request) {
 	const { username, password } = await request.json();
-	console.log("asdasda");
 
 	try {
 		const user = await axiosInstance.get(`users?email=${username}`);
@@ -14,19 +13,16 @@ export async function POST(request: Request) {
 				headers: { "content-type": "application/json" },
 			});
 		}
-		// const match = await verifyPassword(password, user.data[0].password);
-		// console.log("matchmatch");
-		// console.log(password);
-		// console.log("matchmatch");
-		// console.log(user.data[0].password);
-		// console.log("matchmatch");
-		// console.log(match);
-		// brypt.compare ვერ მუშაობს სწორად, ყოველთივს false გამოაქვს, if else ლოგიკაც პირიქითაა შეცვლილი ქვევით
-		const matchv2 = password === user.data[0].password;
-		// console.log("matchmatchv2");
-		// console.log(matchv2);
-		if (matchv2) {
-			//ადრე აქ იყო if(!match)
+		// admin userს არ აქვს ჰეშირებული პაროლი, ამიტომ მისთვის სხვანაირი ვალიდაცია გავწერე
+		let match;
+		if (username == "superadmin@gmail.com") {
+			match = password === user.data[0].password;
+			console.log("admin -" + match);
+		} else {
+			match = await verifyPassword(password, user.data[0].password);
+			console.log("not admin -" + match);
+		}
+		if (match) {
 			const token = generateToken(user.data[0]);
 			const permissions = await axiosInstance.get("permissions");
 			const roles = await axiosInstance.get("roles");

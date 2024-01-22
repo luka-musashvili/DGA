@@ -4,12 +4,13 @@ type ButtonProps = {
 	text: string;
 	variant: "primary" | "secondary" | "outline" | "text";
 	additionalClasses?: string;
+	customClasses?: string;
 	onClick?: () => void;
 	disabled?: boolean;
 };
 
-const Button = ({ text, variant, additionalClasses = "", onClick, disabled }: ButtonProps) => {
-	let baseClasses = "rounded-lg font-semibold text-sm py-[13px] px-5 transition-colors duration-300 uppercase";
+const Button = ({ text, variant, customClasses, additionalClasses = "", onClick, disabled }: ButtonProps) => {
+	let baseClasses = "rounded-lg font-semibold text-sm transition-colors duration-300 uppercase";
 	let variantClasses = "";
 
 	if (disabled) {
@@ -39,8 +40,7 @@ const Button = ({ text, variant, additionalClasses = "", onClick, disabled }: Bu
 			break;
 	}
 
-	// Ensuring additionalClasses doesn't override the disabled styles
-	const classes = `${baseClasses} ${variantClasses} ${disabled ? "" : additionalClasses}`;
+	const classes = `${baseClasses} ${variantClasses} ${customClasses} ${disabled ? "" : additionalClasses}`;
 
 	return (
 		<button className={classes} onClick={!disabled ? onClick : undefined} disabled={disabled} aria-disabled={disabled ? "true" : "false"}>

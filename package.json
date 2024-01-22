@@ -10,10 +10,12 @@
 		"server:start": "json-server --watch db.json --port 3001"
 	},
 	"dependencies": {
+		"@peculiar/webcrypto": "^1.4.4",
 		"axios": "^1.6.5",
 		"bcrypt": "^5.1.1",
 		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.3.1",
+		"jose": "^5.2.0",
 		"js-cookie": "^3.0.5",
 		"jsonwebtoken": "^9.0.2",
 		"next": "14.0.4",
